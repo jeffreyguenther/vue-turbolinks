@@ -1,0 +1,17 @@
+{
+  "name": "vue-turbolinks",
+  "version": "1.0.0",
+  "description": "A Vue mixin to make components work with Turbolinks",
+  "main": "index.js",
+  "author": "Jeffrey Guenther <guenther.jeffrey@gmail.com>",
+  "contributors": ["Chris Oliver<excid3@gmail.com>"],
+  "license": "MIT",
+  "keywords": [
+    "vue",
+    "turbolinks"
+  ],
+
+  "dependencies": {
+    "vue": "^2.2.4"
+  },
+}
