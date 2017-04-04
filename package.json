@@ -8,7 +8,9 @@
     "type": "git"
   },
   "author": "Jeffrey Guenther <guenther.jeffrey@gmail.com>",
-  "contributors": ["Chris Oliver <excid3@gmail.com>"],
+  "contributors": [
+    "Chris Oliver <excid3@gmail.com>"
+  ],
   "license": "MIT",
   "keywords": [
     "vue",
