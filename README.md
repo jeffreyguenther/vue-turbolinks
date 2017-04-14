@@ -22,3 +22,24 @@ document.addEventListener('turbolinks:load', () => {
   });
 });
 ```
+
+### Running Vue only on specific pages
+
+If you want your Vue app to run only on certain pages, you can
+conditionally initialize the Vue app like so:
+
+``` javascript
+import TurbolinksAdapter from 'vue-turbolinks';
+
+document.addEventListener('turbolinks:load', () => {
+  var element = document.getElementById("hello")
+  if (element != null) {
+    var vueapp = new Vue({
+      el: element,
+      template: '<App/>',
+      mixins: [TurbolinksAdapter],
+      components: { App }
+    });
+  }
+});
+```

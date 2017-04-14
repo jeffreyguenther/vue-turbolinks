@@ -5,8 +5,10 @@ function destroyVue() {
 
 var TurbolinksAdapter = {
   beforeMount: function(){
-    document.addEventListener('turbolinks:before-cache', destroyVue.bind(this))
-    this.$originalEl = this.$el.outerHTML;
+    if (this.$el.parentNode) {
+      document.addEventListener('turbolinks:before-cache', destroyVue.bind(this))
+      this.$originalEl = this.$el.outerHTML;
+    }
   },
   destroyed: function() {
     this.$el.outerHTML = this.$originalEl;
