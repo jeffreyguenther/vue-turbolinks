@@ -1,12 +1,14 @@
-function destroyVue() {
-  this.$destroy();
-  document.removeEventListener('turbolinks:before-cache', destroyVue.bind(this))
+function handleVueDestruction(vue) {
+  document.addEventListener('turbolinks:before-render', function teardown() {
+    vue.$destroy();
+    document.removeEventListener('turbolinks:before-render', teardown);
+  });
 }
 
 var TurbolinksAdapter = {
-  beforeMount: function(){
+  beforeMount: function() {
     if (this.$el.parentNode) {
-      document.addEventListener('turbolinks:before-cache', destroyVue.bind(this))
+      handleVueDestruction(this);
       this.$originalEl = this.$el.outerHTML;
     }
   },
