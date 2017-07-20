@@ -1,14 +1,14 @@
-function handleVueDestruction(vue) {
-  document.addEventListener('turbolinks:visit', function teardown() {
+function handleVueDestructionOn(turbolinksEvent, vue) {
+  document.addEventListener(turbolinksEvent, function teardown() {
     vue.$destroy();
-    document.removeEventListener('turbolinks:visit', teardown);
+    document.removeEventListener(turbolinksEvent, teardown);
   });
 }
 
 var TurbolinksAdapter = {
   beforeMount: function() {
     if (this.$el.parentNode) {
-      handleVueDestruction(this);
+      handleVueDestructionOn('turbolinks:visit', this);
       this.$originalEl = this.$el.outerHTML;
     }
   },
