@@ -1,7 +1,7 @@
 function handleVueDestruction(vue) {
-  document.addEventListener('turbolinks:before-render', function teardown() {
+  document.addEventListener('turbolinks:visit', function teardown() {
     vue.$destroy();
-    document.removeEventListener('turbolinks:before-render', teardown);
+    document.removeEventListener('turbolinks:visit', teardown);
   });
 }
 
