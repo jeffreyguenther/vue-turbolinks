@@ -4,6 +4,13 @@ vue-turbolinks is a package to allow you to easily add Vue.js components
 to your Turbolinks powered apps. We handle the Turbolinks events to
 properly setup and teardown your Vue components on the page.
 
+>:warning: If you're using [vue-router](https://github.com/vuejs/vue-router) or another 
+Javascript routing library, you don't need to use Turbolinks or this adapter. 
+Turbolinks is meant to level up the traditional request-render cycle 
+by loading the new page in the background and this adapter makes it possible
+to use Vue components on pages rendered in this manner. If you've decided to
+use a single-page app, you already have everything you need. :metal:
+
 To use this in a Rails project with [webpacker](https://github.com/rails/webpacker) support,
 
 ``` bash
