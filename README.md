@@ -68,3 +68,5 @@ document.addEventListener('turbolinks:load', () => {
   }
 });
 ```
+
+Or you can use a library like [Punchbox](https://github.com/kieraneglin/punchbox) whose JS is available for the asset pipeline or on [NPM](https://www.npmjs.com/package/punchbox-js)
