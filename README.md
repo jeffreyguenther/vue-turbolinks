@@ -19,7 +19,7 @@ $ ./bin/yarn add vue-turbolinks
 
 To use the mixin, include it where you setup your component.
 For example, if you used `rails new myapp --webpack=vue` to create your project using
-webpacker, you'll include it in your `app.vue` file:
+webpacker, you'll include it in your `hello_vue.js` file:
 
 ``` javascript
 import TurbolinksAdapter from 'vue-turbolinks';
