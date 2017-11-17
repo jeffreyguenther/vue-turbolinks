@@ -11,29 +11,15 @@ by loading the new page in the background and this adapter makes it possible
 to use Vue components on pages rendered in this manner. If you've decided to
 use a single-page app, you already have everything you need. :metal:
 
-To use this in a Rails project with [webpacker](https://github.com/rails/webpacker) support,
+To use this in a Rails project with [webpacker](https://github.com/rails/webpacker) support:
 
 ``` bash
 $ ./bin/yarn add vue-turbolinks
 ```
 
-To use the mixin with the hello vue component created when you create a new
-project with `rails new myapp --webpack=vue`. In your `app.vue` file:
-
-```javascript
-import TurbolinksAdapter from 'vue-turbolinks'
-Vue.use(TurbolinksAdapter)
-
-export default {
-  data: function () {
-    return {
-      message: new Date
-    }
-  }
-}
-```
-
-Or if you're just doing this in a regular Javascript file:
+To use the mixin, include it where you setup your component.
+For example, if you used `rails new myapp --webpack=vue` to create your project using
+webpacker, you'll include it in your `app.vue` file:
 
 ``` javascript
 import TurbolinksAdapter from 'vue-turbolinks';
@@ -50,8 +36,8 @@ document.addEventListener('turbolinks:load', () => {
 
 ### Running Vue only on specific pages
 
-If you want your Vue app to run only on certain pages, you can
-conditionally initialize the Vue app like so:
+If you want your Vue component to run only on certain pages, you can
+conditionally initialize it:
 
 ``` javascript
 import TurbolinksAdapter from 'vue-turbolinks';
