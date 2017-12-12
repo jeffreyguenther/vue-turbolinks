@@ -6,9 +6,19 @@ function handleVueDestructionOn(turbolinksEvent, vue) {
 }
 
 function plugin(Vue, options) {
-  // Install a global mixin
-  Vue.mixin({
+  // Creates a new Turbolinks enabled Vue app
+  Vue.newTurbolinksApp = function (selector, options, callback) {
+    document.addEventListener("turbolinks:load", function() {
+      const element = document.querySelector(selector);
+      if (element !== null) {
+        var callbackOptions = typeof callback === 'function' && callback(element) || {};
+        var opts = Object.assign({el: element}, options, callbackOptions);
+        return new Vue(opts);
+      }
+    });
+  }
 
+  Vue.mixin({
     beforeMount: function() {
       // If this is the root component, we want to cache the original element contents to replace later
       // We don't care about sub-components, just the root
