@@ -20,7 +20,7 @@ function plugin(Vue, options) {
 
     destroyed: function() {
       // We only need to revert the html for the root component
-      if (this == this.$root) {
+      if (this == this.$root && this.$el) {
         this.$el.outerHTML = this.$originalEl;
       }
     }
