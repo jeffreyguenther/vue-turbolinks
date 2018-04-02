@@ -13,7 +13,8 @@ function plugin(Vue, options) {
       // If this is the root component, we want to cache the original element contents to replace later
       // We don't care about sub-components, just the root
       if (this == this.$root) {
-        handleVueDestructionOn('turbolinks:visit', this);
+        var destroyEvent = this.$options.turbolinksDestroyEvent || 'turbolinks:before-render'
+        handleVueDestructionOn(destroyEvent, this);
         this.$originalEl = this.$el.outerHTML;
       }
     },
