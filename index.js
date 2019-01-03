@@ -12,7 +12,7 @@ function plugin(Vue, options) {
     beforeMount: function() {
       // If this is the root component, we want to cache the original element contents to replace later
       // We don't care about sub-components, just the root
-      if (this == this.$root) {
+      if (this == this.$root && this.$el) {
         var destroyEvent = this.$options.turbolinksDestroyEvent || 'turbolinks:visit'
         handleVueDestructionOn(destroyEvent, this);
         this.$originalEl = this.$el.outerHTML;
