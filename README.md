@@ -1,5 +1,7 @@
 # A Turbolinks Adapter for Vue components
 
+![npm vue-turbolinks package version](https://img.shields.io/npm/v/vue-turbolinks.svg)
+
 vue-turbolinks is a package to allow you to easily add Vue.js components
 to your Turbolinks powered apps. We handle the Turbolinks events to
 properly setup and teardown your Vue components on the page.
