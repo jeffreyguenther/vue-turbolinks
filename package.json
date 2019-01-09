@@ -1,6 +1,6 @@
 {
   "name": "vue-turbolinks",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "A Vue mixin to make components work with Turbolinks' cache",
   "main": "index.js",
   "repository": {
