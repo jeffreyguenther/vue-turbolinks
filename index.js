@@ -15,10 +15,10 @@ function plugin(Vue, options) {
       if (this == this.$root && this.$el) {
         var destroyEvent = this.$options.turbolinksDestroyEvent || 'turbolinks:visit'
         handleVueDestructionOn(destroyEvent, this);
-        this.$originalEl = this.$el.outerHTML;
+        this.$turbolinksCachedHTML = this.$el.outerHTML;
         // register root hook to restore original element on destroy
         this.$once('hook:destroyed', function() {
-          this.$el.outerHTML = this.$originalEl
+          this.$el.outerHTML = this.$turbolinksCachedHTML
         });
       }
     },
