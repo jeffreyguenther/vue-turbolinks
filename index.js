@@ -16,15 +16,12 @@ function plugin(Vue, options) {
         var destroyEvent = this.$options.turbolinksDestroyEvent || 'turbolinks:visit'
         handleVueDestructionOn(destroyEvent, this);
         this.$originalEl = this.$el.outerHTML;
+        // register root hook to restore original element on destroy
+        this.$once('hook:destroyed', function() {
+          this.$el.outerHTML = this.$originalEl
+        });
       }
     },
-
-    destroyed: function() {
-      // We only need to revert the html for the root component
-      if (this == this.$root && this.$el) {
-        this.$el.outerHTML = this.$originalEl;
-      }
-    }
   })
 };
 
