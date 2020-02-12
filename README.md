@@ -23,6 +23,8 @@ To use the mixin, include it where you setup your component.
 For example, if you used `rails new myapp --webpack=vue` to create your project using
 webpacker, you'll include it in your `hello_vue.js` file:
 
+### Mixin Option 1: Global
+
 ``` javascript
 import TurbolinksAdapter from 'vue-turbolinks';
 Vue.use(TurbolinksAdapter)
@@ -31,6 +33,21 @@ document.addEventListener('turbolinks:load', () => {
   var vueapp = new Vue({
     el: "#hello",
     template: '<App/>',
+    components: { App }
+  });
+});
+```
+
+### Mixin Option 2: Single Component
+
+``` javascript
+import { turbolinksAdapterMixin } from 'vue-turbolinks';
+
+document.addEventListener('turbolinks:load', () => {
+  var vueapp = new Vue({
+    el: "#hello",
+    template: '<App/>',
+    mixins: [turbolinksAdapterMixin],
     components: { App }
   });
 });
