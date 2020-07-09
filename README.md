@@ -82,3 +82,25 @@ You can pass in `turbolinksDestroyEvent` if you would like to customize which ev
 
 `Vue.use(TurbolinksAdapter, { turbolinksDestroyEvent: 'turbolinks:before-cache' })`
 
+### A note on transitions
+
+If a `$root` component's **root node** is a Vue `<transition>` then calling the `$destroy` method may fail, throwing `NoModificationAllowedError: Failed to set the 'outerHTML' property on 'Element'` errors on the next `turbolinks:visit` event. To prevent this, wrap the `transition` in a DOM element: 
+
+Instead of:
+```
+<template>
+    <transition name="my-transition">
+      <div v-if="ui_state.show" class="modal">
+...
+```
+
+do:
+
+```
+<template>
+  <div>
+    <transition name="my-transition">
+      <div v-if="ui_state.show" class="modal">
+...
+```
+
