@@ -1,12 +1,20 @@
 function handleVueDestruction(vue) {
-  var turbolinksEvent = vue.$options.turbolinksDestroyEvent || 'turbolinks:visit';
+  const turbolinksEvent = vue.$options.turbolinksDestroyEvent || 'turbo:visit';
+
   document.addEventListener(turbolinksEvent, function teardown() {
     vue.$destroy();
     document.removeEventListener(turbolinksEvent, teardown);
   });
+
+  if (!vue.$options.turbolinksDestroyEvent) {
+    document.addEventListener('turbolinks:visit', function teardown() {
+      vue.$destroy();
+      document.removeEventListener('turbolinks:visit', teardown);
+    });
+  }
 }
 
-var turbolinksAdapterMixin = {
+const turbolinksAdapterMixin = {
   beforeMount: function() {
     // If this is the root component, we want to cache the original element contents to replace later
     // We don't care about sub-components, just the root
@@ -22,7 +30,7 @@ var turbolinksAdapterMixin = {
   }
 };
 
-function plugin(Vue, options) {
+function plugin(Vue, _options) {
   // Install a global mixin
   Vue.mixin(turbolinksAdapterMixin)
 }
