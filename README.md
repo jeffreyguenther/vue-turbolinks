@@ -1,6 +1,8 @@
 # A Turbolinks & Hotwire Adapter for Vue components
 
 ![npm vue-turbolinks package version](https://img.shields.io/npm/v/vue-turbolinks.svg)
+![npm vue-turbolinks package downloads](https://img.shields.io/npm/dt/vue-turbolinks.svg)
+![npm vue-turbolinks license](https://img.shields.io/github/license/jeffreyguenther/vue-turbolinks.svg)
 
 vue-turbolinks is a package to allow you to easily add Vue.js components
 to your Turbolinks & Hotwire powered apps. We handle the events to
