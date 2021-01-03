@@ -17,5 +17,8 @@
     "turbolinks",
     "hotwire",
     "turbo"
-  ]
+  ],
+  "np": {
+    "tests": false
+  }
 }
