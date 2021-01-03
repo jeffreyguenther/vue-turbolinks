@@ -32,10 +32,10 @@ webpacker, you'll include it in your `hello_vue.js` file:
 
 ``` javascript
 import TurbolinksAdapter from 'vue-turbolinks';
-Vue.use(TurbolinksAdapter)
+Vue.use(TurbolinksAdapter);
 
 document.addEventListener('turbo:load', () => {
-  var vueapp = new Vue({
+  const vueapp = new Vue({
     el: "#hello",
     template: '<App/>',
     components: { App }
@@ -49,7 +49,7 @@ document.addEventListener('turbo:load', () => {
 import { turbolinksAdapterMixin } from 'vue-turbolinks';
 
 document.addEventListener('turbo:load', () => {
-  var vueapp = new Vue({
+  const vueapp = new Vue({
     el: "#hello",
     template: '<App/>',
     mixins: [turbolinksAdapterMixin],
@@ -65,12 +65,13 @@ conditionally initialize it:
 
 ``` javascript
 import TurbolinksAdapter from 'vue-turbolinks';
-Vue.use(TurbolinksAdapter)
+Vue.use(TurbolinksAdapter);
 
 document.addEventListener('turbo:load', () => {
-  var element = document.getElementById("hello")
+  const element = document.getElementById("hello");
+
   if (element != null) {
-    var vueapp = new Vue({
+    const vueapp = new Vue({
       el: element,
       template: '<App/>',
       components: { App }
@@ -85,23 +86,23 @@ Or you can use a library like [Punchbox](https://github.com/kieraneglin/punchbox
 
 You can pass in `destroyEvent` if you would like to customize which event Vue is torn down on. By default, this uses `turbo:before-cache` or `turbolinks:before-cache`.
 
-`Vue.use(TurbolinksAdapter, { destroyEvent: 'turbo:before-cache' })`
+`Vue.use(TurbolinksAdapter, { destroyEvent: 'turbo:before-cache' });`
 
 ### A note on transitions
 
 If a `$root` component's **root node** is a Vue `<transition>` then calling the `$destroy` method may fail, throwing `NoModificationAllowedError: Failed to set the 'outerHTML' property on 'Element'` errors on the next `turbo:visit` event. To prevent this, wrap the `transition` in a DOM element:
 
 Instead of:
-```
+```html
 <template>
-    <transition name="my-transition">
-      <div v-if="ui_state.show" class="modal">
+  <transition name="my-transition">
+    <div v-if="ui_state.show" class="modal">
 ...
 ```
 
 do:
 
-```
+```html
 <template>
   <div>
     <transition name="my-transition">

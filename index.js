@@ -1,5 +1,5 @@
 function handleVueDestruction(vue) {
-  let event = vue.$options.destroyEvent || defaultEvent();
+  const event = vue.$options.destroyEvent || defaultEvent();
 
   document.addEventListener(event, function teardown() {
     vue.$destroy();
@@ -7,7 +7,7 @@ function handleVueDestruction(vue) {
   });
 }
 
-let Mixin = {
+const Mixin = {
   beforeMount: function() {
     // If this is the root component, we want to cache the original element contents to replace later
     // We don't care about sub-components, just the root
@@ -32,10 +32,10 @@ function plugin(Vue, options) {
 
 function defaultEvent() {
   if (typeof Turbo !== 'undefined') {
-    return "turbo:visit";
-  } else {
-    return "turbolinks:visit";
+    return 'turbo:visit';
   }
+
+  return 'turbolinks:visit';
 }
 
 export { Mixin };
