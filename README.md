@@ -8,8 +8,8 @@ properly setup and teardown your Vue components on the page.
 
 #### Supported Libraries
 
-* Hotwire's Turbo.js
-* Turbolinks
+* [Hotwire's Turbo.js](https://turbo.hotwire.dev/)
+* [Turbolinks](https://github.com/turbolinks/turbolinks)
 
 >:warning: If you're using [vue-router](https://github.com/vuejs/vue-router) or another
 Javascript routing library, you don't need to use Turbolinks or this adapter.
