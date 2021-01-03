@@ -1,14 +1,19 @@
-# A Turbolinks Adapter for Vue components
+# A Turbolinks & Hotwire Adapter for Vue components
 
 ![npm vue-turbolinks package version](https://img.shields.io/npm/v/vue-turbolinks.svg)
 
 vue-turbolinks is a package to allow you to easily add Vue.js components
-to your Turbolinks powered apps. We handle the Turbolinks events to
+to your Turbolinks & Hotwire powered apps. We handle the events to
 properly setup and teardown your Vue components on the page.
 
->:warning: If you're using [vue-router](https://github.com/vuejs/vue-router) or another 
-Javascript routing library, you don't need to use Turbolinks or this adapter. 
-Turbolinks is meant to level up the traditional request-render cycle 
+#### Supported Libraries
+
+* Hotwire's Turbo.js
+* Turbolinks
+
+>:warning: If you're using [vue-router](https://github.com/vuejs/vue-router) or another
+Javascript routing library, you don't need to use Turbolinks or this adapter.
+Turbolinks is meant to level up the traditional request-render cycle
 by loading the new page in the background and this adapter makes it possible
 to use Vue components on pages rendered in this manner. If you've decided to
 use a single-page app, you already have everything you need. :metal:
@@ -29,7 +34,7 @@ webpacker, you'll include it in your `hello_vue.js` file:
 import TurbolinksAdapter from 'vue-turbolinks';
 Vue.use(TurbolinksAdapter)
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('turbo:load', () => {
   var vueapp = new Vue({
     el: "#hello",
     template: '<App/>',
@@ -43,7 +48,7 @@ document.addEventListener('turbolinks:load', () => {
 ``` javascript
 import { turbolinksAdapterMixin } from 'vue-turbolinks';
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('turbo:load', () => {
   var vueapp = new Vue({
     el: "#hello",
     template: '<App/>',
@@ -62,7 +67,7 @@ conditionally initialize it:
 import TurbolinksAdapter from 'vue-turbolinks';
 Vue.use(TurbolinksAdapter)
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('turbo:load', () => {
   var element = document.getElementById("hello")
   if (element != null) {
     var vueapp = new Vue({
@@ -78,13 +83,13 @@ Or you can use a library like [Punchbox](https://github.com/kieraneglin/punchbox
 
 ### Options
 
-You can pass in `turbolinksDestroyEvent` if you would like to customize which event Vue is torn down on. By default, this uses `turbolinks:before-cache`.
+You can pass in `destroyEvent` if you would like to customize which event Vue is torn down on. By default, this uses `turbo:before-cache` or `turbolinks:before-cache`.
 
-`Vue.use(TurbolinksAdapter, { turbolinksDestroyEvent: 'turbolinks:before-cache' })`
+`Vue.use(TurbolinksAdapter, { destroyEvent: 'turbo:before-cache' })`
 
 ### A note on transitions
 
-If a `$root` component's **root node** is a Vue `<transition>` then calling the `$destroy` method may fail, throwing `NoModificationAllowedError: Failed to set the 'outerHTML' property on 'Element'` errors on the next `turbolinks:visit` event. To prevent this, wrap the `transition` in a DOM element: 
+If a `$root` component's **root node** is a Vue `<transition>` then calling the `$destroy` method may fail, throwing `NoModificationAllowedError: Failed to set the 'outerHTML' property on 'Element'` errors on the next `turbo:visit` event. To prevent this, wrap the `transition` in a DOM element:
 
 Instead of:
 ```

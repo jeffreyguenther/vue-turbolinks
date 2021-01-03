@@ -14,9 +14,8 @@
   "license": "MIT",
   "keywords": [
     "vue",
-    "turbolinks"
-  ],
-  "dependencies": {
-    "vue": "^2.2.4"
-  }
+    "turbolinks",
+    "hotwire",
+    "turbo"
+  ]
 }
