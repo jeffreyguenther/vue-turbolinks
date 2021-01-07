@@ -38,5 +38,5 @@ function defaultEvent() {
   return 'turbolinks:visit';
 }
 
-export { Mixin };
+export { Mixin as turbolinksAdapterMixin };
 export default plugin;
