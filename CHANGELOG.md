@@ -1,5 +1,9 @@
 ### Unreleased
 
+### 2.2.1
+
+* Fix export to be backwards compatible - @tricknotes
+
 ### 2.2.0
 
 * Add support for Turbo from Hotwire - @excid3
