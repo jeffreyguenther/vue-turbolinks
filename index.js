@@ -19,7 +19,8 @@ const Mixin = {
 
       // register root hook to restore original element on destroy
       this.$once('hook:destroyed', function() {
-        this.$el.outerHTML = this.$cachedHTML
+        if( this.$el.parentNode )
+          this.$el.outerHTML = this.$cachedHTML
       });
     }
   }
