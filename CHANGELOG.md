@@ -1,5 +1,9 @@
 ### Unreleased
 
+### 2.2.2
+
+* Handle destroy when parent node is missing. #39
+
 ### 2.2.1
 
 * Fix export to be backwards compatible - @tricknotes
